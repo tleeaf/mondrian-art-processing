@@ -2,9 +2,10 @@
 function setup() {
   w = 2001
   h = 1001
+  scale = 0.3
   createCanvas(w,h)
-  unit = 50
-  strokeWeight(8)
+  unit = 50 * scale
+  strokeWeight(unit/4)
   rect(h/2,w/2,unit,unit)
   for(var i = 0; i < w; i+=unit){
     for(var j = 0; j < h; j+=unit){
