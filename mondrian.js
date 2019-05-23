@@ -2,17 +2,45 @@
 function setup() {
   w = 2001
   h = 1001
-  scale = 0.3
+  gridscale = 1
   createCanvas(w,h)
-  unit = 50 * scale
+  unit = 50 * gridscale
   strokeWeight(unit/4)
   rect(h/2,w/2,unit,unit)
   for(var i = 0; i < w; i+=unit){
     for(var j = 0; j < h; j+=unit){
-      fill(randomMondrianColor())
-      rect(i,j,unit,unit)
+      drawBlock(i,j,unit)
+      //drawBlockRandomSize(i,j,unit)
+      //drawBlockRandomPosition(i,j,unit)
+      //drawBlockRandomPositionAndSize(i,j,unit)
     }   
   }
+}
+
+function drawBlock(x,y,size){
+  fill(randomMondrianColor())
+  rect(x,y,size,size)
+}
+
+function drawBlockRandomSize(x,y,size){
+  var p1 = random(4)
+  var p2 = random(4)
+  fill(randomMondrianColor())
+  rect(x,y,size*p1,size*p2)
+}
+
+function drawBlockRandomPosition(x,y,size){
+  var p1 = random(1,10)
+  var p2 = random(1,10)
+  fill(randomMondrianColor())
+  rect(x+p1*random(-1,1),y+p2*random(-1,1),size,size)
+}
+
+function drawBlockRandomPositionAndSize(x,y,size){
+  var p1 = random(1,10)
+  var p2 = random(1,10)
+  fill(randomMondrianColor())
+  rect(x+p1*random(-1,1),y+p2*random(-1,1),size*p1,size*p2)
 }
 
 function randomMondrianColor(){
