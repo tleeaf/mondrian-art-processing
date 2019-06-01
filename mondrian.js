@@ -76,19 +76,21 @@ function markSpaces(startX,startY,blockW,blockH,number){
      blockW = Xdim - startX;
    if(startY + blockH > Ydim)
      blockH = Ydim - startY;
-   
+   var actualW = blockW
    for(var i = startX; i < startX + blockW; i++){
-      if(gridMapIndex.indexOf(j*Ydim + i) < 0){
-        blockW = 1;
-      }
+  
      for(var j = startY; j < startY + blockH; j++){
+      if(gridMapIndex.indexOf(j*Ydim + i) < 0){
+        actualW = i - startX;
+        break;
+      }
        if(i < Xdim && j < Ydim){
          gridMap[i][j] = number;
          gridMapIndex.splice(gridMapIndex.indexOf(j*Ydim + i),1);
        }
      }
    }
-   drawBlock(startX,startY,blockW,blockH);
+   drawBlock(startX,startY,actualW,blockH);
 }
 
 function flatTo2DIndex(index,xMax,yMax){
